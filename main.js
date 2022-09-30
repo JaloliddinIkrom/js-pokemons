@@ -157,37 +157,59 @@
 
 
 let elList = document.querySelector('.js-list');
+let elSel = document.querySelector('.js-select'); 
 
-pokemons.forEach(function(poke){
+function domChiqarish (array, node){ 
+
+    array.forEach(function(poke){
     
+        newItem = document.createElement("li");
+        node.appendChild(newItem); 
+    
+        elSpan = document.createElement("span");
+        elSpan.textContent = poke.num;
+        newItem.appendChild(elSpan); 
+    
+        elTitle = document.createElement("h2");
+        elTitle.textContent = poke.name;
+        newItem.appendChild(elTitle); 
+    
+        elImg = document.createElement("img");
+        elImg.src = poke.img;
+        newItem.appendChild(elImg); 
+    
+        elText = document.createElement("p");
+        elText.textContent = poke.type;
+        newItem.appendChild(elText); 
+    
+        elStrong = document.createElement("strong");
+        elStrong.textContent = poke.spawn_time;
+        newItem.appendChild(elStrong);
+    
+    });   
+} 
 
-    newItem = document.createElement("li");
-    //  newItem.textContent = poke.name;
-    elList.appendChild(newItem); 
-
-    elSpan = document.createElement("span");
-    elSpan.textContent = poke.num;
-    newItem.appendChild(elSpan); 
-
-    elTitle = document.createElement("h2");
-    elTitle.textContent = poke.name;
-    newItem.appendChild(elTitle); 
-
-    elImg = document.createElement("img");
-    elImg.src = poke.img;
-    newItem.appendChild(elImg); 
-
-    elText = document.createElement("p");
-    elText.textContent = poke.candy;
-    newItem.appendChild(elText); 
-
-    elStrong = document.createElement("strong");
-    elStrong.textContent = poke.spawn_time;
-    newItem.appendChild(elStrong);
-
-})
+domChiqarish(pokemons, elList); 
 
 
+
+
+ elSel.addEventListener('change', function(evt){ 
+
+  let elSelectVelu = elSel.value;
+  let filtr = [];
+  elList.innerHTML = ''; 
+
+  pokemons.forEach((el) => { 
+
+    if(el.type.includes(elSelectVelu)){ 
+
+        filtr.push(el);
+    }
+  });
+
+    domChiqarish(filtr, elList);
+ })
 
 
 
