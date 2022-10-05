@@ -154,17 +154,19 @@
 //   console.log("Hoisting");
 // }
  
+ 
 
 
 let elList = document.querySelector('.js-list');
-let elSel = document.querySelector('.js-select'); 
+let elSel = document.querySelector('.js-select');   
+let elSel2 = document.querySelector('.js-sel');
 
-function domChiqarish (array, node){ 
 
-    array.forEach(function(poke){
+
+    pokemons.forEach((poke) =>{
     
         newItem = document.createElement("li");
-        node.appendChild(newItem); 
+        
     
         elSpan = document.createElement("span");
         elSpan.textContent = poke.num;
@@ -184,32 +186,172 @@ function domChiqarish (array, node){
     
         elStrong = document.createElement("strong");
         elStrong.textContent = poke.spawn_time;
-        newItem.appendChild(elStrong);
+        newItem.appendChild(elStrong); 
+
+        elList.appendChild(newItem);
     
     });   
-} 
-
-domChiqarish(pokemons, elList); 
 
 
 
+let DomList = new Set();
+ 
+pokemons.forEach((el) => { 
 
- elSel.addEventListener('change', function(evt){ 
+el.type.forEach((elVelu) => { 
 
-  let elSelectVelu = elSel.value;
-  let filtr = [];
-  elList.innerHTML = ''; 
+  DomList.add(elVelu);
+}); 
 
-  pokemons.forEach((el) => { 
+}); 
 
-    if(el.type.includes(elSelectVelu)){ 
+DomList.forEach((el) => { 
 
-        filtr.push(el);
-    }
-  });
+  let newOpsh = document.createElement('option');
+  newOpsh.value = el;
+  newOpsh.textContent = el; 
 
-    domChiqarish(filtr, elList);
- })
+   elSel.appendChild(newOpsh);
+});
+
+
+elSel.addEventListener('change', function(evt) { 
+
+ evt.preventDefault();
+
+ let elSelect = elSel.value;
+ let ArrFiltir = [];
+ elList.innerHTML = '';
+
+
+ pokemons.forEach((elnam) => { 
+
+  if(elnam.type.includes(elSelect)){ 
+
+    ArrFiltir.push(elnam);
+
+  }
+
+ }); 
+
+
+ArrFiltir.forEach((poke) => { 
+
+  newItem = document.createElement("li");
+ 
+ elSpan = document.createElement("span");
+ elSpan.textContent = poke.num;
+ newItem.appendChild(elSpan); 
+
+ elTitle = document.createElement("h2");
+ elTitle.textContent = poke.name;
+ newItem.appendChild(elTitle); 
+
+ elImg = document.createElement("img");
+ elImg.src = poke.img;
+ newItem.appendChild(elImg); 
+
+ elText = document.createElement("p");
+ elText.textContent = poke.type;
+ newItem.appendChild(elText); 
+
+ elStrong = document.createElement("strong");
+ elStrong.textContent = poke.spawn_time;
+ newItem.appendChild(elStrong); 
+
+ elList.appendChild(newItem);
+
+});
+
+}); 
+
+ 
+elSel2.addEventListener('change', function() { 
+
+  let arrNew = [];
+  elList.innerHTML = '';
+
+  if(elSel2.value == 'Aa-Zz'){ 
+
+    let New = pokemons.sort((a, b) => { 
+
+     let TitleA = a.name.toUpperCase().charCodeAt(0); 
+     let TitleB = b.name.toUpperCase().charCodeAt(0); 
+
+     if(TitleA < TitleB){ 
+
+      return -1;
+     } else if(TitleA > TitleB){ 
+
+
+      return 1;
+     } else{ 
+
+      return 0;
+     }
+       
+    }) 
+
+    arrNew = New;
+  } 
+  
+
+  if(elSel2.value == 'Zz-Aa'){ 
+
+    let New = pokemons.sort((a, b) => { 
+
+     let TitleA = a.name.toUpperCase().charCodeAt(0); 
+     let TitleB = b.name.toUpperCase().charCodeAt(0); 
+
+     if(TitleA > TitleB){ 
+
+      return -1;
+     } else if(TitleA < TitleB){ 
+
+      return 1;
+     } else{ 
+
+      return 0;
+     }
+       
+    }) 
+
+    arrNew = New;
+  } 
+   
+  
+arrNew.forEach((poke) => { 
+
+  newItem = document.createElement("li");
+ 
+ elSpan = document.createElement("span");
+ elSpan.textContent = poke.num;
+ newItem.appendChild(elSpan); 
+
+ elTitle = document.createElement("h2");
+ elTitle.textContent = poke.name;
+ newItem.appendChild(elTitle); 
+
+ elImg = document.createElement("img");
+ elImg.src = poke.img;
+ newItem.appendChild(elImg); 
+
+ elText = document.createElement("p");
+ elText.textContent = poke.type;
+ newItem.appendChild(elText); 
+
+ elStrong = document.createElement("strong");
+ elStrong.textContent = poke.spawn_time;
+ newItem.appendChild(elStrong); 
+
+ elList.appendChild(newItem);
+
+});
+ 
+
+});
+
+ 
 
 
 

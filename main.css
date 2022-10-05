@@ -96,8 +96,11 @@ strong{
     right: -20px;
 } 
 
-.js-select{ 
- width: 100px;
+.js-select{   
+
+ border-radius: 5px;
+ outline: none;
+ width: 250px;
  padding: 5px; 
  margin-left: 40px; 
  margin-bottom: 40px; 
@@ -105,3 +108,15 @@ strong{
  background-color: aqua; 
  color: #000; 
 } 
+.js-sel{  
+     
+    border-radius: 5px;
+    outline: none;
+    width: 250px;
+    padding: 5px; 
+    margin-left: 40px; 
+    margin-bottom: 40px; 
+    border: none; 
+    background-color: aqua; 
+    color: #000; 
+   } 
