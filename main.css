@@ -119,4 +119,19 @@ strong{
     border: none; 
     background-color: aqua; 
     color: #000; 
+   }  
+
+   .dark{ 
+
+  background-color: #000;
    } 
+   .js-btn{ 
+
+    width: 200px; 
+    padding: 5px 20px; 
+    color: #fff; 
+    background-color:red; 
+    border-radius: 5px; 
+    margin-top: 50px; 
+    margin-left: 20px;
+   }

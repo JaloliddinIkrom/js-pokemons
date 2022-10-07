@@ -353,5 +353,28 @@ arrNew.forEach((poke) => {
 
  
 
+const elBteen = document.querySelector('.js-btn') 
 
+var elColor = false;
+ 
+elBteen.addEventListener('click', function() { 
 
+  elColor = !elColor;
+
+  var bg = elColor ? 'dark' : 'light';
+
+  window.localStorage.setItem('elColor', bg); 
+  domFunksiya();
+}) 
+
+function domFunksiya (){ 
+
+  if(window.localStorage.getItem('elColor') == 'dark'){ 
+
+    document.body.classList.add('dark');
+  } else{ 
+
+    document.body.classList.remove('dark');
+  }
+} 
+domFunksiya();
